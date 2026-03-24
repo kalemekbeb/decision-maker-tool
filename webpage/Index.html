@@ -1,18 +1,32 @@
 <!-- TODO: basic structure -->
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="script.js"></script>
+    <!-- Apparently you need defer when assigning your javascript in head-->
+    <script src="script.js" defer></script>
     <title>Decision Maker Tool</title>
 </head>
 
+
+
 <body>
-    <h1>Decision Maker Tool</h1>
-    <div id="div-body">
-        <p id="pTest"></p>
+    <div>   
+        <h2>Decision Maker Tool</h2>
+
+        <div id="options-container">
+            <div class="option">
+                <input type="text" class="option-input" name="option" placeholder="Enter one of the options"></input>
+                <input type="number" class="option-input" name="cost" placeholder="Enter cost efficency of options (1-5) 5 being cheapest"></input>
+                <input type="number" class="option-input" name="time" placeholder="Enter time commitment required (1-5) 5 being longest"></input>
+                <input type="number" class="option-input" name="time" placeholder="Enter predicted level of enjoyment (1-5) 5 being most"></input>
+            </div>
+        </div>
+        <button onclick="addOption()">Add Option</button>
     </div>
 </body>
 </html>
