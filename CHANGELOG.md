@@ -2,6 +2,11 @@
 
 Use inverse order
 
+## 2026-03-25 Kale Mekbeb
+Removed repeated answers when you click 'Make Decision' button. 
+If the options are changed the new best decision will now overwrite the old one.
+Added some CSS to the decision output to make it cleaner.
+
 ## 2026-03-24 Luke Sewell
 Added basic option calculation and labels to input boxes
 
