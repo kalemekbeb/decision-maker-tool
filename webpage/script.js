@@ -39,6 +39,10 @@ function calculate(){
     Make the output a little more pretty
     */
 
+    // Variables for the chart
+    const labels = []
+    const scores = []
+
     // Grab the container we're using (this is for display)
     const container = document.getElementById("computation-container");
 
@@ -63,12 +67,16 @@ function calculate(){
         // calculate the score
         const score = (cost * weights.cost) + (time * weights.time) + (enjoyment * weights.enjoyment);
 
+        // add score and name to the array
+        labels.push(name);
+        scores.push(score);
+
         // if this score is better than the best score, make it the new best and keep track of name
         if(score > bestScore){
             bestScore = score;
             bestOption = name;
         }
-    
+        
     });
 
     // build the result box div element
@@ -84,4 +92,36 @@ function calculate(){
 `;
 
     container.appendChild(resultBox);
+
+    // call the display graph method 
+    displayGraph(scores, labels, bestOption);  
+}
+
+function displayGraph(scores, labels, winner){
+    // making chart
+    const chart = document.getElementById('chart').getContext('2d');
+
+    // if chart already exists delete it
+    if(window.newChart){
+        window.newChart.destroy();
+    }
+
+    // make the bar chart
+    // TODO: Add a label to show yellow means winner
+    window.newChart = new Chart(chart, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Score",
+                data: scores,
+                backgroundColor: labels.map(label =>
+                    label === winner
+                        ? "rgba(255, 200, 0, 0.8)" // highlight the winner
+                        : "rgb(49, 43, 67)"
+                )
+            }]
+        }
+    });
+
 }

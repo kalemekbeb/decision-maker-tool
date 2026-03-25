@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
     <!-- Apparently you need defer when assigning your javascript in head-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="script.js" defer></script>
     <title>Decision Maker Tool</title>
 </head>
@@ -33,6 +34,8 @@
         <button onclick="addOption()">Add Option</button>
     </div>
 
+    
+
     <div>
         <div id="computation-container">
             <div class="computation">
@@ -41,6 +44,12 @@
         </div>
 
         <button onclick="calculate()">Make Decision</button>
+    </div>
+
+    <div>
+        <div style="width: 500px;">
+            <canvas id="chart"></canvas>
+        </div>
     </div>
 
 </body>
