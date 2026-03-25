@@ -5,3 +5,14 @@ Basic graphical upgrades, better fonts and stuff
 body {
     font-family:Arial, Helvetica, sans-serif;
 }
+
+/* Adds styling to result box (big green box)*/
+#result-box {
+    margin-top: 16px;
+    padding: 16px;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    background-color: #f0fff0;
+    color: #2e7d32;
+    font-size: 1.1rem;
+}

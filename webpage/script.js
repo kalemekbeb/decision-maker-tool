@@ -42,6 +42,9 @@ function calculate(){
     // Grab the container we're using (this is for display)
     const container = document.getElementById("computation-container");
 
+    // Clear any previous results so they don't stack on repeated clicks
+    container.innerHTML = '';
+
     // Grab all the option divs
     const options = document.querySelectorAll(".option")
 
@@ -68,10 +71,17 @@ function calculate(){
     
     });
 
-    // display the best option
+    // build the result box div element
     const resultBox = document.createElement("div");
 
-    resultBox.textContent = 'Best option: ' + bestOption;
+    // add an id to result box so it can be used in CSS formatting
+    resultBox.id = "result-box";
+
+    // display the best options name and it's score
+    resultBox.innerHTML = `
+    <h3>Best Option: <em>${bestOption}</em></h3>
+    <p>Score: <strong>${bestScore}</strong></p>
+`;
 
     container.appendChild(resultBox);
 }
