@@ -36,9 +36,9 @@ function calculate(){
     /*
     TODO: 
     Clear past decision 
-    Make the output a little more pretty
     Input validation, only add labels and scores that are valid
     User defined weights
+    Handle the 
     */
 
     // Variables for the chart

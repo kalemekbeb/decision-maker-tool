@@ -2,6 +2,11 @@
 
 Use inverse order
 
+## 2026-03-25 Luke Sewell
+Added a bar graph visual to show the score distribution.
+Centered the ui.
+
+
 ## 2026-03-25 Kale Mekbeb
 Removed repeated answers when you click 'Make Decision' button. 
 If the options are changed the new best decision will now overwrite the old one.
