@@ -4,8 +4,8 @@ Use inverse order
 
 ## 2026-03-25 Luke Sewell
 Added a bar graph visual to show the score distribution.
+Bar graph uses the displayGraph() function and will update each time the user calculates.
 Centered the ui.
-
 
 ## 2026-03-25 Kale Mekbeb
 Removed repeated answers when you click 'Make Decision' button. 
