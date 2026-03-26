@@ -1,8 +1,8 @@
 /* 
 TODO:
-Add more weights, maybe importance?
 Save decisions to localStorage 
 Make a way to view previous decisions and rate them
+Normalize inputs and weights to 0-1
 */
 
 /*
@@ -12,7 +12,8 @@ default weights is fine but we also need user-defined weight support
 const weights = {
     cost: 1,
     time: -1, // more time is worse
-    enjoyment: 2
+    enjoyment: 2,
+    importance: 3 // heavily biased towards importance to help with procrasination 
 };
 
 
@@ -30,6 +31,8 @@ function addOption(){
         <input type="number" name="time" placeholder="Time (1-5)">
         
         <input type="number"  name="enjoyment" placeholder="Enjoyment (1-5)">
+
+        <input type="number" name="importance" placeholder="Importance (1-5)">
     `;
 
     option.appendChild(div);
@@ -64,14 +67,15 @@ function calculate(){
         const cost = Number(option.querySelector('input[name="cost"]').value);
         const time = Number(option.querySelector('input[name="time"]').value);
         const enjoyment = Number(option.querySelector('input[name="enjoyment"]').value);
+        const importance = Number(option.querySelector('input[name="importance"').value);
 
         // if name, cost, time, enjoyment are not filled in do not continue with calculation.
-        if(!name || isNaN(cost) || isNaN(time) || isNaN(enjoyment)){
+        if(!name || isNaN(cost) || isNaN(time) || isNaN(enjoyment) || isNaN(importance)){
             return;
         }
 
         // calculate the score
-        const score = (cost * weights.cost) + (time * weights.time) + (enjoyment * weights.enjoyment);
+        const score = (cost * weights.cost) + (time * weights.time) + (enjoyment * weights.enjoyment) + (importance * weights.importance);
 
         // add score and name to the array
         labels.push(name);
