@@ -2,6 +2,14 @@
 
 Use inverse order
 
+## 2026-03-26 Luke Sewell
+Added cards to UI
+Added background gradient to UI
+Now the program ignores empty inputs 
+Set best score default to -infinity so that it supports negative scores 
+Added labels above each input column 
+Buttons and cards now move slightly when hovered and buttons change colors when hovered
+
 ## 2026-03-25 Luke Sewell
 Added a bar graph visual to show the score distribution.
 Bar graph uses the displayGraph() function and will update each time the user calculates.

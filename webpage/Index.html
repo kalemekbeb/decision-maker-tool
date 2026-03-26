@@ -1,4 +1,8 @@
-<!-- TODO: basic structure -->
+<!-- 
+ TODO: 
+ basic structure
+ need to clean up html file and make it more organized
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,41 +22,46 @@
 <body>
       
 <h2>Decision Maker Tool</h2>
-    <div> 
-        <div id="options-container">
-            <div class="option">
-                <label for="option">Option:</label>
-                <input type="text" class="option-input" name="option" placeholder="Enter one of the options" min="1" max="5">
-                <label for="cost">Cost (1-5):</label>
-                <input type="number" class="option-input" name="cost" placeholder="Enter cost efficency of options (1-5) 5 being cheapest" min="1" max="5">
-                <label for="time">Time Commitment(1-5):</label>
-                <input type="number" class="option-input" name="time" placeholder="Enter time commitment required (1-5) 5 being longest" min="1" max="5">
-                <label for="enjoyment">Enjoyment (1-5):</label>
-                <input type="number" class="option-input" name="enjoyment" placeholder="Enter predicted level of enjoyment (1-5) 5 being most" min="1" max="5">
-            </div>
-        </div>
-        <button onclick="addOption()">Add Option</button>
-    </div>
-
-    
-
-    <div>
-        <div id="computation-container">
-            <div class="computation">
+    <div class="container"> 
+        <!-- Options card -->
+        <div class="card">
+            <h3>Options</h3>
+            <div class = "option header">
+                <span>Name</span>
+                <span>Cost</span>
+                <span>Time</span>
+                <span>Enjoyment</span>
 
             </div>
+                <div id="options-container">
+                    <div class ="option">
+                        
+                        <input type="text" name="option" placeholder="Option Name">
+
+                        <input type="number" name="cost" placeholder="Cost (1-5)">
+
+                        <input type="number" name="time" placeholder="Time (1-5)">
+
+                        <input type="number"  name="enjoyment" placeholder="Enjoyment (1-5)">
+                    </div>
+                </div>
+            
+                <button onclick="addOption()">Add Option</button>
+        </div>
+        <!-- Decision card -->
+        <div class="card">
+            <button onclick="calculate()">Make Decision</button>
+            
+            <div id="computation-container"></div>
         </div>
 
-        <button onclick="calculate()">Make Decision</button>
-    </div>
-
-    <div>
-        <div class="chart-container">
-            <div style="width: 500px;">
-                <canvas id="chart"></canvas>
+        <div class="card">
+            <div class = "chart-container">
+                <div style="width: 100%; max-width: 500px;">
+                    <canvas id="chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>

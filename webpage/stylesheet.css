@@ -2,30 +2,85 @@
 TODO:
 Basic graphical upgrades, better fonts and stuff
 */
-.container{
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.chart-container{
-    display: flex; 
-    justify-content: center;
-
-}
 
 body {
+    margin:0;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #38383c, #dddde1);
+    color: #f5f5f5;
+}
+
+.container{
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/*Each section is seperated into a card which acts as a sort of island for the container*/
+.card {
+    background: #2f2f4f;
+    padding:30px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+/*Added hover to the card which gives ui a bit more of a modern look*/
+.card:hover{
+    transform:translateY(-3px);
+    transition: 0.2s ease;
+}
+
+.option {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 5px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+/*Button styling*/
+button {
+    margin-top: 10px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #6c5ce7;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* changes button color when hovering it and slightly offsets it */
+button:hover{
+    background: #5a4bd1;
+    transform: translateY(-1px);
 }
 
 /* Adds styling to result box (big green box)*/
 #result-box {
+
     margin-top: 16px;
     padding: 16px;
     border: 2px solid #4CAF50;
-    border-radius: 8px;
-    background-color: #f0fff0;
-    color: #2e7d32;
-    font-size: 1.1rem;
+    background: linear-gradient(135deg, #00c853, #69f0ae);
+    color: #1d491f;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Centers chart */
+.chart-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }

@@ -1,8 +1,14 @@
 /* 
 TODO:
 Add more weights, maybe importance?
+Save decisions to localStorage 
+Make a way to view previous decisions and rate them
 */
 
+/*
+TODO:
+default weights is fine but we also need user-defined weight support
+*/
 const weights = {
     cost: 1,
     time: -1, // more time is worse
@@ -12,20 +18,18 @@ const weights = {
 
 // Function for adding in the options
 function addOption(){
-    // TODO: Make sure this is best practice
     const option = document.getElementById("options-container");
     const div = document.createElement("div");
     div.className = "option";
 
     div.innerHTML= ` 
-        <label for="option">Option:</label>
-        <input type="text" class="option-input" name="option" placeholder="Enter one of the options" min="1" max="5">
-        <label for="cost">Cost (1-5):</label>
-        <input type="number" class="option-input" name="cost" placeholder="Enter cost efficency of options (1-5) 5 being cheapest" min="1" max="5">
-        <label for="time">Time Commitment(1-5):</label>
-        <input type="number" class="option-input" name="time" placeholder="Enter time commitment required (1-5) 5 being longest" min="1" max="5">
-        <label for="enjoyment">Enjoyment (1-5):</label>
-        <input type="number" class="option-input" name="enjoyment" placeholder="Enter predicted level of enjoyment (1-5) 5 being most" min="1" max="5">
+        <input type="text" name="option" placeholder="Option Name">
+
+        <input type="number" name="cost" placeholder="Cost (1-5)">
+
+        <input type="number" name="time" placeholder="Time (1-5)">
+        
+        <input type="number"  name="enjoyment" placeholder="Enjoyment (1-5)">
     `;
 
     option.appendChild(div);
@@ -33,13 +37,6 @@ function addOption(){
 
 // Function for calculating best option based off weights and values
 function calculate(){
-    /*
-    TODO: 
-    Clear past decision 
-    Input validation, only add labels and scores that are valid
-    User defined weights
-    Handle the 
-    */
 
     // Variables for the chart
     const labels = []
@@ -52,19 +49,25 @@ function calculate(){
     container.innerHTML = '';
 
     // Grab all the option divs
-    const options = document.querySelectorAll(".option")
+    const options = document.querySelectorAll(".option:not(.header")
 
     // set variables to default
-    let bestScore = 0;
+    // bestScore is set to negative infinity instead of 0 because if the scores are negative it wont pick a best (worst) option.
+    let bestScore = -Infinity;
     let bestOption = null;
 
     // for each option div
     options.forEach(option => { 
         // grab the values in each box
         const name = option.querySelector('input[name="option"]').value;
-        const cost = option.querySelector('input[name="cost"]').value;
-        const time = option.querySelector('input[name="time"]').value;
-        const enjoyment = option.querySelector('input[name="enjoyment"]').value;
+        const cost = Number(option.querySelector('input[name="cost"]').value);
+        const time = Number(option.querySelector('input[name="time"]').value);
+        const enjoyment = Number(option.querySelector('input[name="enjoyment"]').value);
+
+        // if name, cost, time, enjoyment are not filled in do not continue with calculation.
+        if(!name || isNaN(cost) || isNaN(time) || isNaN(enjoyment)){
+            return;
+        }
 
         // calculate the score
         const score = (cost * weights.cost) + (time * weights.time) + (enjoyment * weights.enjoyment);
@@ -119,8 +122,8 @@ function displayGraph(scores, labels, winner){
                 data: scores,
                 backgroundColor: labels.map(label =>
                     label === winner
-                        ? "rgba(255, 200, 0, 0.8)" // highlight the winner
-                        : "rgb(49, 43, 67)"
+                        ? "rgba(255, 200, 0, 0.9)" // highlight the winner
+                        : "rgb(200, 200, 255)"
                 )
             }]
         }
