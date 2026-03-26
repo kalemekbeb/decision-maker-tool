@@ -37,6 +37,7 @@ function addOption(){
 
 // Function for calculating best option based off weights and values
 function calculate(){
+    // TODO: make a decision object to save
 
     // Variables for the chart
     const labels = []
