@@ -2,7 +2,20 @@
 TODO:
 Basic graphical upgrades, better fonts and stuff
 */
+.container{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chart-container{
+    display: flex; 
+    justify-content: center;
+
+}
+
 body {
+    text-align: center;
     font-family:Arial, Helvetica, sans-serif;
 }
 
