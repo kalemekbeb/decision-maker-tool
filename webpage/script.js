@@ -9,6 +9,9 @@ Normalize inputs and weights to 0-1
 TODO:
 default weights is fine but we also need user-defined weight support
 */
+
+import { saveDecision, getAllDecisions, deleteDecision, getDecisionById } from './storage.js';
+
 const weights = {
     cost: 1,
     time: -1, // more time is worse
@@ -45,6 +48,7 @@ function calculate(){
     // Variables for the chart
     const labels = []
     const scores = []
+    const decisionOptions = [];
 
     // Grab the container we're using (this is for display)
     const container = document.getElementById("computation-container");
@@ -53,7 +57,7 @@ function calculate(){
     container.innerHTML = '';
 
     // Grab all the option divs
-    const options = document.querySelectorAll(".option:not(.header")
+    const options = document.querySelectorAll(".option:not(.header)")
 
     // set variables to default
     // bestScore is set to negative infinity instead of 0 because if the scores are negative it wont pick a best (worst) option.
@@ -67,7 +71,7 @@ function calculate(){
         const cost = Number(option.querySelector('input[name="cost"]').value);
         const time = Number(option.querySelector('input[name="time"]').value);
         const enjoyment = Number(option.querySelector('input[name="enjoyment"]').value);
-        const importance = Number(option.querySelector('input[name="importance"').value);
+        const importance = Number(option.querySelector('input[name="importance"]').value);
 
         // if name, cost, time, enjoyment are not filled in do not continue with calculation.
         if(!name || isNaN(cost) || isNaN(time) || isNaN(enjoyment) || isNaN(importance)){
@@ -76,6 +80,15 @@ function calculate(){
 
         // calculate the score
         const score = (cost * weights.cost) + (time * weights.time) + (enjoyment * weights.enjoyment) + (importance * weights.importance);
+
+        decisionOptions.push({
+            name,
+            cost,
+            time,
+            enjoyment,
+            importance,
+            score
+        });
 
         // add score and name to the array
         labels.push(name);
@@ -88,6 +101,21 @@ function calculate(){
         }
         
     });
+
+    const decision = {
+        id: Date.now(),
+        createdAt: new Date().toISOString(),
+
+        options: decisionOptions,
+
+        weights: {...weights},
+
+        bestOption,
+        bestScore
+    };
+
+    saveDecision(decision);
+    console.log("Saved decisions:", JSON.parse(localStorage.getItem("decisionMakerData")));
 
     // build the result box div element
     const resultBox = document.createElement("div");
@@ -135,3 +163,4 @@ function displayGraph(scores, labels, winner){
     });
 
 }
+

@@ -12,10 +12,26 @@ Add ability to name past decisions
 
 const STORAGE_KEY = "decisionMakerData";
 
-function getAllDecisions(){}
+export function getAllDecisions(){
+    const data = localStorage.getItem(STORAGE_KEY);
+    // if there's data, parse it, else return an empty array
+    return data ? JSON.parse(data) : []
+}
 
-function saveDecision(decision){}
 
-function deleteDecision(id){}
+export function getDecision(id){
+    const data = getAllDecisions().filter(d => d.id == id);
+    return data;
+}
 
-function getDecision(id){}
+export function saveDecision(decision){
+    const data = getAllDecisions();
+    data.push(decision);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+export function deleteDecision(id){
+    const data = getAllDecisions().filter(d => d.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); 
+}
+
