@@ -48,6 +48,56 @@
             
                 <button onclick="addOption()">Add Option</button>
         </div>
+        <div class="card">
+            <h3>Importance</h3>
+            <p class="weights-subtitle">How much does each factor matter to you?</p>
+         
+            <div class="weight-row">
+                <div class="weight-label">
+                    <span class="weight-name">Cost</span>
+                    <span class="weight-note">Lower cost = better</span>
+                </div>
+                <div class="slider-track">
+                    <input type="range" id="weight-cost" min="1" max="5" value="3" oninput="updateSliderLabel('cost')">
+                    <div class="slider-labels">
+                        <span>Not important</span>
+                        <span>Very important</span>
+                    </div>
+                </div>
+                <span class="slider-value" id="label-cost">3</span>
+            </div>
+         
+            <div class="weight-row">
+                <div class="weight-label">
+                    <span class="weight-name">Time</span>
+                    <span class="weight-note">Less time = better</span>
+                </div>
+                <div class="slider-track">
+                    <input type="range" id="weight-time" min="1" max="5" value="3" oninput="updateSliderLabel('time')">
+                    <div class="slider-labels">
+                        <span>Not important</span>
+                        <span>Very important</span>
+                    </div>
+                </div>
+                <span class="slider-value" id="label-time">3</span>
+            </div>
+         
+            <div class="weight-row">
+                <div class="weight-label">
+                    <span class="weight-name">Enjoyment</span>
+                    <span class="weight-note">Higher enjoyment = better</span>
+                </div>
+                <div class="slider-track">
+                    <input type="range" id="weight-enjoyment" min="1" max="5" value="3" oninput="updateSliderLabel('enjoyment')">
+                    <div class="slider-labels">
+                        <span>Not important</span>
+                        <span>Very important</span>
+                    </div>
+                </div>
+                <span class="slider-value" id="label-enjoyment">3</span>
+            </div>
+        </div>
+
         <!-- Decision card -->
         <div class="card">
             <button onclick="calculate()">Make Decision</button>
