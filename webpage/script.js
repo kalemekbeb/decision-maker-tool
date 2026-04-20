@@ -15,6 +15,33 @@ const weights = {
     enjoyment: 2
 };
 
+function toggleWeights() {
+    const body = document.getElementById('weights-body');
+    const icon = document.getElementById('weights-toggle-icon');
+    const isHidden = body.style.display === 'none';
+    body.style.display = isHidden ? 'block' : 'none';
+    icon.textContent = isHidden ? '▲' : '▼';
+}
+function updateSliderLabel(variable) {
+    const val = document.getElementById(`weight-${variable}`).value;
+    document.getElementById(`label-${variable}`).textContent = val;
+}
+
+function getWeights() {
+    const isHidden = document.getElementById('weights-body').style.display === 'none';
+
+    if (isHidden) {
+        return { cost: -1, time: -1, enjoyment: 2 };
+    }
+
+    return {
+        cost:      -Number(document.getElementById('weight-cost').value),
+        time:      -Number(document.getElementById('weight-time').value),
+        enjoyment:  Number(document.getElementById('weight-enjoyment').value)
+    };
+}
+
+
 
 // Function for adding in the options
 function addOption(){
@@ -37,6 +64,9 @@ function addOption(){
 
 // Function for calculating best option based off weights and values
 function calculate(){
+
+    // gets the weights from the sliders if updated
+    const weights = getWeights();
 
     // Variables for the chart
     const labels = []

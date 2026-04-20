@@ -84,3 +84,36 @@ button:hover{
     justify-content: center;
     align-items: center;
 }
+
+.weights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.weights-header:hover h3 {
+    color: #a29bfe;
+}
+
+.weights-header h3 {
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.weights-subtitle {
+    margin: 0 0 12px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+}
+
+.weight-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;  /* was 18px */
+    background: rgba(255,255,255,0.05);
+    padding: 8px 12px;    /* was 12px 16px */
+    border-radius: 8px;
+}
