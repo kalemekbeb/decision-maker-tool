@@ -2,6 +2,12 @@
 
 Use inverse order
 
+## 2026-04-20 Kale Mekbeb
+Added collapsible Importance card with 1-5 sliders for Cost, Time, and Enjoyment weights
+Slider panel is hidden by default and toggles open with a ▼/▲ arrow indicator
+Number badge next to each slider updates live as the user drags
+calculate() now reads weights dynamically, falling back to hardcoded defaults when the panel is hidden
+
 ## 2026-03-26 Luke Sewell
 Added cards to UI
 Added background gradient to UI
